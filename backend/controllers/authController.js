@@ -7,23 +7,23 @@ export  const signUp=async(req,res)=>{
     try{
         const {email,password,username}=req.body;
         if(!email||!password||!username){
-            res.status(400).json({success:false,message:"All fields are required"});
+            return res.status(400).json({success:false,message:"All fields are required"});
         }
         const emailRegex=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if(!emailRegex.test(email)){
-            res.status(400).json({success:false,message:"Not a Valid Email"});
+           return  res.status(400).json({success:false,message:"Not a Valid Email"});
 
         }
         if(password.length<6){
-            res.status(400).json({success:false,message:"Password length must be more than 6 characters"});
+           return  res.status(400).json({success:false,message:"Password length must be more than 6 characters"});
         }
         const existingUserByEmail=await User.findOne({email:email});
         if(existingUserByEmail){
-            res.status(400).json({success:false,message:"Email address already exists"});
+           return  res.status(400).json({success:false,message:"Email address already exists"});
         }
         const existingUserByUser=await User.findOne({username});
         if(existingUserByUser){
-            res.status(400).json({success:false,message:"Username already exists"});
+           return res.status(400).json({success:false,message:"Username already exists"});
         }
         const PROFILE_PICS=['/avatar1.png','/avatar2.png','/avatar3.png'];
         const image=PROFILE_PICS[Math.floor(Math.random()*PROFILE_PICS.length)];
@@ -71,7 +71,10 @@ export const  logIn=async (req,res)=>{
             return res.status(400).json({success:false,message:"Password not matched"})
         }
         generateJwtandCookie(user._id,res);
-        res.status(200).json({success:true,message:"Logged in successfully"});
+        res.status(200).json({success:true,message:"Logged in successfully",user: {
+            ...user._doc,
+            password: "",
+        },});
    }catch(err){
     console.log("Error creating Account in login controller"+err.message);
         res.status(500).json({
@@ -94,5 +97,13 @@ export const  logOut=async (req,res)=>{
             success:false,
             message:"Internal Server Error"
         })
+    }
+}
+
+export async function authCheck(req,res){
+    try{
+        res.status(200).json({success:true,user:req.user})
+    }catch(err){
+        res.status(500).json({message:"Internal Server Error"})
     }
 }
