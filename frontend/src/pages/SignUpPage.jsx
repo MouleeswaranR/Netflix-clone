@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuthStore } from '../store/authUser';
@@ -55,5 +56,6 @@ const {signup}=useAuthStore();
     </div>
   )
 }
+
 
 export default SignUpPage

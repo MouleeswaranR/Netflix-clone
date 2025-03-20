@@ -1,4 +1,5 @@
 
+
 import { Routes,Route, Navigate } from 'react-router-dom';
 import HomePage from './pages/Home/HomePage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
@@ -34,10 +35,8 @@ if(isCheckingAuth){
  </Routes>
  <Footer/>
  <Toaster/>
-
- </>
- 
-)
+ </> 
+ )
 }
 
 export default App
