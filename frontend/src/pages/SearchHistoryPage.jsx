@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
+import NavBar from "../components/NavBar";
 import { SMALL_IMG_BASE_URL } from "../utils/constants";
 import { Trash } from "lucide-react";
 import toast from "react-hot-toast";
@@ -44,7 +44,7 @@ const SearchHistoryPage = () => {
 	if (searchHistory?.length === 0) {
 		return (
 			<div className='bg-black min-h-screen text-white'>
-				<Navbar />
+				<NavBar />
 				<div className='max-w-6xl mx-auto px-4 py-8'>
 					<h1 className='text-3xl font-bold mb-8'>Search History</h1>
 					<div className='flex justify-center items-center h-96'>
