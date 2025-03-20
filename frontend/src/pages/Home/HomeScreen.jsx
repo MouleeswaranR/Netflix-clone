@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import NavBar from "../../components/NavBar";
+import Navbar from "../../components/Navbar";
 import { Info, Play } from "lucide-react";
 import useGetTrendingContent from "../../hooks/useGetTrendingContent";
 import { MOVIE_CATEGORIES, ORIGINAL_IMG_BASE_URL, TV_CATEGORIES } from "../../utils/constants";
@@ -15,7 +15,7 @@ const HomeScreen = () => {
 	if (!trendingContent)
 		return (
 			<div className='h-screen text-white relative'>
-				<NavBar />
+				<Navbar />
 				<div className='absolute top-0 left-0 w-full h-full bg-black/70 flex items-center justify-center -z-10 shimmer' />
 			</div>
 		);
@@ -23,8 +23,9 @@ const HomeScreen = () => {
 	return (
 		<>
 			<div className='relative h-screen text-white '>
-				<NavBar />
+				<Navbar />
 
+				{/* COOL OPTIMIZATION HACK FOR IMAGES */}
 				{imgLoading && (
 					<div className='absolute top-0 left-0 w-full h-full bg-black/70 flex items-center justify-center shimmer -z-10' />
 				)}

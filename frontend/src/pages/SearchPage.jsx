@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useContentStore } from "../store/content";
-import NavBar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 import { Search } from "lucide-react";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -36,7 +36,7 @@ const SearchPage = () => {
 
 	return (
 		<div className='bg-black min-h-screen text-white'>
-			<NavBar />
+			<Navbar />
 			<div className='container mx-auto px-4 py-8'>
 				<div className='flex justify-center gap-3 mb-4'>
 					<button

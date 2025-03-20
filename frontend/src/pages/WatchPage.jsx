@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useContentStore } from "../store/content";
 import axios from "axios";
-import NavBar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ReactPlayer from "react-player";
 import { ORIGINAL_IMG_BASE_URL, SMALL_IMG_BASE_URL } from "../utils/constants";
@@ -92,7 +92,7 @@ const WatchPage = () => {
 		return (
 			<div className='bg-black text-white h-screen'>
 				<div className='max-w-6xl mx-auto'>
-					<NavBar />
+					<Navbar />
 					<div className='text-center mx-auto px-4 py-8 h-full mt-40'>
 						<h2 className='text-2xl sm:text-5xl font-bold text-balance'>Content not found 😥</h2>
 					</div>
@@ -104,7 +104,7 @@ const WatchPage = () => {
 	return (
 		<div className='bg-black min-h-screen text-white'>
 			<div className='mx-auto container px-4 py-8 h-full'>
-				<NavBar />
+				<Navbar />
 
 				{trailers.length > 0 && (
 					<div className='flex justify-between items-center mb-4'>
@@ -153,6 +153,7 @@ const WatchPage = () => {
 					)}
 				</div>
 
+				{/* movie details */}
 				<div
 					className='flex flex-col md:flex-row items-center justify-between gap-20 
 				max-w-6xl mx-auto'

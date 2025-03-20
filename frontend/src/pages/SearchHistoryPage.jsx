@@ -1,19 +1,22 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import NavBar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 import { SMALL_IMG_BASE_URL } from "../utils/constants";
 import { Trash } from "lucide-react";
 import toast from "react-hot-toast";
 
 function formatDate(dateString) {
+	// Create a Date object from the input date string
 	const date = new Date(dateString);
 
 	const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
+	// Extract the month, day, and year from the Date object
 	const month = monthNames[date.getUTCMonth()];
 	const day = date.getUTCDate();
 	const year = date.getUTCFullYear();
 
+	// Return the formatted date string
 	return `${month} ${day}, ${year}`;
 }
 
@@ -44,7 +47,7 @@ const SearchHistoryPage = () => {
 	if (searchHistory?.length === 0) {
 		return (
 			<div className='bg-black min-h-screen text-white'>
-				<NavBar />
+				<Navbar />
 				<div className='max-w-6xl mx-auto px-4 py-8'>
 					<h1 className='text-3xl font-bold mb-8'>Search History</h1>
 					<div className='flex justify-center items-center h-96'>
